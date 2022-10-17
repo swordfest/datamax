@@ -25,6 +25,9 @@ module.exports = {
 
 				"3xl": "1820px",
 				// => @media (min-width: 1820px) { ... }
+
+				"3xl": "2480px",
+				// => @media (min-width: 2480px) { ... }
 			},
 			fontFamily: {
 				twemoji: ["Twemoji", "sans-serif"],
