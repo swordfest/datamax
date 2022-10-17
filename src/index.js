@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Navbar from './components/Navbar';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <App /> */}
+    <Navbar/>
+    <main className='container w-full h-screen ml-20 p-6 bg-slate-400'>
+      aa
+    </main>
   </React.StrictMode>
 );
 
