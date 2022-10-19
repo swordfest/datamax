@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Navbar/>
-    <main className='container w-full h-screen ml-20 p-6 bg-slate-400'>
+    <main className='container w-full h-screen ml-[100px] p-6 bg-slate-400'>
       aa
     </main>
   </React.StrictMode>
