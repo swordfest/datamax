@@ -4,11 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Navbar from './components/Navbar';
+import Navbar2 from './components/Navbar2';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Navbar/>
+    <Navbar2/>
     <main className='container w-full h-screen ml-[100px] p-6 bg-slate-400'>
       aa
     </main>
