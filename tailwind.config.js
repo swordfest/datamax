@@ -33,6 +33,17 @@ module.exports = {
 				twemoji: ["Twemoji", "sans-serif"],
 				awesome: ["FontAwesome", "sans-serif"],
 			},
+			keyframes: {
+				menu: {
+					'0%, 100%' : { transform: 'scaleY(1)' },
+					'50%' : { transform: 'scaleY(1.5)' },
+					// '80%' : { transform: 'scaleY(1.5)'},
+					// '100%' : { transform: 'scaleY(0)' },
+				},
+			},
+			animation: {
+				menu: 'menu 1s ease-in-out ',
+			}
 		},
 	},
 	plugins: [require("@tailwindcss/line-clamp"), require("@tailwindcss/forms")],

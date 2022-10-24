@@ -4,14 +4,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Navbar from './components/Navbar';
-import Navbar2 from './components/Navbar2';
+import Captcha from './components/Captcha';
+import TabMenu from './components/TabMenu';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Navbar2/>
+    <Navbar/>
     <main className='container w-full h-screen ml-[100px] p-6 bg-slate-400'>
-      aa
+      <Captcha/>
     </main>
   </React.StrictMode>
 );
