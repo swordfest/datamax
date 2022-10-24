@@ -5,13 +5,14 @@ import '../index.css';
 
 function Login () {
     return (
-        <div className='w-full h-screen bg-gradient-to-r from-[#ECECEC] via-[#D7D7D7] to-[#ECECEC] flex items-center justify-center '>
-            <div className='login-panel w-[690px] h-[516px] flex gap-14 px-6 py-4 '>
-                <div className='title w-auto h-auto flex flex-col items-start justify-center '>
+        <div className=' w-full h-screen bg-gradient-to-r from-[#ECECEC] via-[#D7D7D7] to-[#ECECEC] flex items-center justify-center '>
+
+            <div className='login-panel w-full lg:w-[690px] h-auto md:h-[516px] flex flex-col md:flex-row gap-6 md:gap-14 p-4 md:px-6 md:py-4 '>
+                <div className='title w-auto h-auto flex flex-col items-center md:items-start justify-center '>
                     <h1 className=' w-[201px] h-auto text-3xl font-bold text-center '>Nauta</h1>
                     <span className=' w-[201px] h-auto text-2xl font-semibold text-[#7a7a7a] text-center '>Portal de Usuario</span>
                 </div>
-                <div className='separator w-px h-full bg-[#9d9d9d] '> </div>
+                <div className='separator w-full h-px md:w-px md:h-full bg-[#9d9d9d] '> </div>
                 
                 <div className='form-wrapper w-full flex flex-col gap-6 '>
                     {/* <form action="" method="post" className='gap-6'> */}

@@ -8,6 +8,7 @@ import Captcha from './components/Captcha';
 import TabMenu from './components/TabMenu';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Login from './components/Login';
+import Dashboard from './components/Dashboard';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,6 +23,8 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <Login/>
+      {/* <Navbar/> */}
+      {/* <Dashboard/> */}
     </QueryClientProvider>
   </React.StrictMode>
 );

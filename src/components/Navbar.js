@@ -7,14 +7,10 @@ import TabMenu from './TabMenu';
 function Navbar () {
 
     const [selected, setSelected] = useState('dashboard');
-    
-    useEffect(() => {
-        // setSelected('dashboard');
-        // console.log(selected);
-    });
 
     return (
         <nav className='w-[100px] h-full z-10 left-0 fixed flex flex-col gap-4 justify-between items-center bg-white dark:bg-[#212121] transition-transform shadow-lg'>
+            
             <div className='logo-app w-full h-[132px] flex items-center justify-center'>
                 <svg width="70" height="76" viewBox="0 0 70 76" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect x="11" y="0.5" width="48" height="48" rx="12" fill="#2B79D6"/>
