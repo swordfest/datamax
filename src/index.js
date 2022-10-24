@@ -6,14 +6,23 @@ import reportWebVitals from './reportWebVitals';
 import Navbar from './components/Navbar';
 import Captcha from './components/Captcha';
 import TabMenu from './components/TabMenu';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import Login from './components/Login';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Navbar/>
-    <main className='container w-full h-screen ml-[100px] p-6 bg-slate-400'>
-      <Captcha/>
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <Login/>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 
