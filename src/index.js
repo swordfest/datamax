@@ -22,9 +22,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <Login/>
-      {/* <Navbar/> */}
-      {/* <Dashboard/> */}
+      {/* <Login/> */}
+      <Navbar/>
+      <Dashboard/>
     </QueryClientProvider>
   </React.StrictMode>
 );
