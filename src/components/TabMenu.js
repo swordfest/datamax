@@ -1,21 +1,61 @@
 import { render } from '@testing-library/react';
 import { tab } from '@testing-library/user-event/dist/tab';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../index.css';
 
 function TabMenu (props) {
 
     const [selected, setSelected] = useState('dashboard');
+    const [posItemDash, setPosItemDash] = useState(0);
+    const [posParentItemDash, setPosParentItemDash] = useState(0);
 
     const animationBar = (pos, name) => {
-        
         if (selected === name) {
             return console.log(selected);
         }
     };
 
+    const itemDash = useRef(null);
+    const parentItemDash = useRef(null);
 
-    // const tabs = [
+    const defineDistance = (elem, parentElem) => {
+        return elem - parentElem;
+    };
+
+    useEffect(() => {
+        // setPosItemDash(iconDash.current.getBoundingClientRect());
+        // setPosParentItemDash(parentIconDash.current.getBoundingClientRect());
+    },[])
+
+
+
+    return (
+
+        <div className='menu-app w-full h-auto flex justify-end px-3 gap-2.5 '>
+                <div ref={parentItemDash} className='menu-app-options flex flex-col gap-6'>
+                    {
+                        props.tabs.map((tab) => (
+                            <div ref={itemDash} className={'menu-opt-dashboard w-12 h-12 rounded-xl cursor-pointer hover:bg-slate-200 active:bg-slate-200 transition-colors ' + (selected === tab.name ? 'bg-slate-200' : '')} onClick={() => {setSelected(tab.name); console.log(defineDistance(tab.pos(itemDash.current), parentItemDash.current.getBoundingClientRect().top))}}>
+                                <img src={`data:image/svg+xml;utf8,${encodeURIComponent(tab.icon)}`} />
+                            </div>
+                        ))
+                    }
+                </div>
+
+                <div className=' relative cmenu-opts-pointer-container w-1.5 h-full py-4 '>
+                    <div className={' absolute w-1.5 h-4 bg-[#2B79D6] rounded-full top-[16px] select-none ' + animationBar(tab.pos, tab.name)}> </div>
+                </div>
+            </div>
+    )
+}
+
+export default TabMenu;
+
+
+
+
+
+// const tabs = [
     //     {
     //         name: 'dashboard',
     //         icon: '<svg className="a" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">'+
@@ -49,27 +89,3 @@ function TabMenu (props) {
     //         pos: 'top-[232px] animate-menu ease-in duration-100 transition-all',
     //     },
     // ];
-
-
-
-    return (
-
-        <div className='menu-app w-full h-auto flex justify-end px-3 gap-2.5 '>
-                <div className='menu-app-options flex flex-col gap-6'>
-                    {
-                        props.tabs.map((tab) => (
-                            <div className={'menu-opt-dashboard w-12 h-12 rounded-xl cursor-pointer hover:bg-slate-200 active:bg-slate-200 transition-colors ' + (selected === tab.name ? 'bg-slate-200' : '')} onClick={() => {setSelected(tab.name)}}>
-                                <img src={`data:image/svg+xml;utf8,${encodeURIComponent(tab.icon)}`} />
-                            </div>
-                        ))
-                    }
-                </div>
-
-                <div className=' relative cmenu-opts-pointer-container w-1.5 h-full py-4 '>
-                    <div className={' absolute w-1.5 h-4 bg-[#2B79D6] rounded-full top-[16px] select-none ' + animationBar(tab.pos, tab.name)}> </div>
-                </div>
-            </div>
-    )
-}
-
-export default TabMenu;
