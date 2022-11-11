@@ -33,7 +33,7 @@ export default function TabMenu (props) {
                 <div ref={parentItemDash} className='menu-app-options flex flex-col gap-6'>
                     {
                         props.tabs.map((tab) => (
-                            <div ref={itemDash} className={'menu-opt-dashboard w-12 h-12 rounded-xl cursor-pointer hover:bg-slate-200 active:bg-slate-200 transition-colors ' + (selected === tab.name ? 'bg-slate-200' : '')} onClick={() => {setSelected(tab.name); console.log(defineDistance(tab.pos(itemDash.current), parentItemDash.current.getBoundingClientRect().top))}}>
+                            <div ref={itemDash} className={'menu-opt-dashboard w-12 h-12 rounded-xl cursor-pointer hover:bg-[#ECECEC] active:bg-slate-200 transition-colors ' + (selected === tab.name ? 'bg-slate-200' : '')} onClick={() => {setSelected(tab.name); console.log(defineDistance(tab.pos(itemDash.current), parentItemDash.current.getBoundingClientRect().top))}}>
                                 <img alt='icon menu' src={`data:image/svg+xml;utf8,${encodeURIComponent(tab.icon)}`} />
                             </div>
                         ))

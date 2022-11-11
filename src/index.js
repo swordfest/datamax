@@ -9,6 +9,7 @@ import TabMenu from './components/TabMenu';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Content from './components/Content';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -24,7 +25,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       {/* <Login/> */}
       <Navbar/>
-      <Dashboard/>
+      <Content/>
     </QueryClientProvider>
   </React.StrictMode>
 );
