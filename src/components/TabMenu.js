@@ -3,17 +3,17 @@ import { tab } from '@testing-library/user-event/dist/tab';
 import React, { useState, useEffect, useRef } from 'react';
 import '../index.css';
 
-function TabMenu (props) {
+export default function TabMenu (props) {
 
     const [selected, setSelected] = useState('dashboard');
     const [posItemDash, setPosItemDash] = useState(0);
     const [posParentItemDash, setPosParentItemDash] = useState(0);
 
-    const animationBar = (pos, name) => {
-        if (selected === name) {
-            return console.log(selected);
-        }
-    };
+    // const animationBar = (pos, name) => {
+    //     if (selected === name) {
+    //         return console.log(selected);
+    //     }
+    // };
 
     const itemDash = useRef(null);
     const parentItemDash = useRef(null);
@@ -22,12 +22,10 @@ function TabMenu (props) {
         return elem - parentElem;
     };
 
-    useEffect(() => {
-        // setPosItemDash(iconDash.current.getBoundingClientRect());
-        // setPosParentItemDash(parentIconDash.current.getBoundingClientRect());
-    },[])
-
-
+    // useEffect(() => {
+    //     // setPosItemDash(iconDash.current.getBoundingClientRect());
+    //     // setPosParentItemDash(parentIconDash.current.getBoundingClientRect());
+    // },[])
 
     return (
 
@@ -36,20 +34,20 @@ function TabMenu (props) {
                     {
                         props.tabs.map((tab) => (
                             <div ref={itemDash} className={'menu-opt-dashboard w-12 h-12 rounded-xl cursor-pointer hover:bg-slate-200 active:bg-slate-200 transition-colors ' + (selected === tab.name ? 'bg-slate-200' : '')} onClick={() => {setSelected(tab.name); console.log(defineDistance(tab.pos(itemDash.current), parentItemDash.current.getBoundingClientRect().top))}}>
-                                <img src={`data:image/svg+xml;utf8,${encodeURIComponent(tab.icon)}`} />
+                                <img alt='icon menu' src={`data:image/svg+xml;utf8,${encodeURIComponent(tab.icon)}`} />
                             </div>
                         ))
                     }
                 </div>
 
                 <div className=' relative cmenu-opts-pointer-container w-1.5 h-full py-4 '>
-                    <div className={' absolute w-1.5 h-4 bg-[#2B79D6] rounded-full top-[16px] select-none ' + animationBar(tab.pos, tab.name)}> </div>
+                    <div className=' absolute w-1.5 h-4 bg-[#2B79D6] rounded-full top-[16px] select-none '> </div>
                 </div>
             </div>
     )
 }
 
-export default TabMenu;
+// export default TabMenu;
 
 
 
