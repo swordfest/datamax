@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Captcha from './components/Captcha';
 import TabMenu from './components/TabMenu';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { BrowserRouter, Route, Routes, Links } from 'react-router-dom';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Content from './components/Content';
@@ -23,9 +24,17 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      {/* <Login/> */}
-      <Navbar/>
-      <Content/>
+      
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login/>} />
+          <Route path='/dashboard'>
+            <Navbar/>
+            <Content/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      
     </QueryClientProvider>
   </React.StrictMode>
 );

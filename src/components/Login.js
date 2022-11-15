@@ -16,17 +16,19 @@ function Login () {
                 
                 <div className='form-wrapper w-full flex flex-col gap-6 '>
                     {/* <form action="" method="post" className='gap-6'> */}
-                        <div className='user-field flex flex-col gap-2 '>
-                            <span>User</span>
-                            <input type="text" className=' h-12 rounded-lg border-none form-input ' placeholder='user@email.domain' />
-                        </div>
-                        <div className='pass-field flex flex-col gap-2 '>
-                            <span>Password</span>
-                            <input type="text" className=' h-12 rounded-lg border-none form-input ' placeholder='••••••••••' />
-                            <div className=' flex items-center gap-2 '>
+                        <label htmlFor="user" className='flex flex-col gap-2'>
+                            User
+                            <input type="text" id='user' className=' h-12 rounded-lg border-none form-input ' placeholder='user@email.domain' />
+                        </label>
+                        <div className='flex flex-col gap-2 '>
+                            <label htmlFor="password" className='flex flex-col gap-2'>
+                                Password
+                                <input type="text" id='password' className=' h-12 rounded-lg border-none form-input ' placeholder='••••••••••' />
+                            </label>
+                            <label htmlFor="showPass" className=' flex items-center gap-2 '>
                                 <input type="checkbox" name="Show Password" id="showPass" className='form-checkbox rounded-[4px]' />
-                                <span>Show Password</span>
-                            </div>
+                                Show Password
+                            </label>
                         </div>
                         <div className='captcha flex flex-col gap-4 '>
                                 <span>Captcha</span>
