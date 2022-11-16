@@ -13,12 +13,11 @@ function Login () {
 
     
     const onSubmit = (dataForm) => {
-        
         const objLogin = {
             username: dataForm.user,
             password: dataForm.pass,
             idRequest: text,
-            captchatext: dataForm.captchatext
+            captchatext: dataForm.captchatext,
         }
         axios.post('https://www.nauta.cu:5002/login', objLogin)
             .then (res => {
@@ -28,7 +27,6 @@ function Login () {
         console.log(JSON.stringify(objLogin));
     }
 
-
     const dameText = (textParam) => {
         setText(textParam);
     }
@@ -36,8 +34,6 @@ function Login () {
     const togglePwd = () => {
         setShowPwd(!showpwd);
     }
-
-    
 
     return (
         <div className=' w-full h-screen bg-gradient-to-r from-[#ECECEC] via-[#D7D7D7] to-[#ECECEC] flex items-center justify-center '>
@@ -53,13 +49,13 @@ function Login () {
                     <form onSubmit={handleSubmit(onSubmit)} className='w-full flex flex-col gap-6 '>
                         <label htmlFor="user" className='flex flex-col gap-2'>
                             User
-                            <input type="text" id='user' {...register('user', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='user@email.domain' />
+                            <input type="text" id='user' {...register('user', {required: true})} className=' h-12 rounded-lg border-none form-input focus:placeholder:opacity-0 ' placeholder='user@email.domain' />
                             {errors.user && <span className='text-red-500 text-sm'>This field is required</span>}
                         </label>
                         <div className='flex flex-col gap-2 '>
                             <label htmlFor="password" className='flex flex-col gap-2'>
                                 Password
-                                <input type={showpwd ? 'text' : 'password'} id='password' {...register('pass', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='••••••••••' />
+                                <input type={showpwd ? 'text' : 'password'} id='password' {...register('pass', {required: true})} className=' h-12 rounded-lg border-none form-input focus:placeholder:opacity-0 ' placeholder='••••••••••' />
                                 {errors.pass && <span className='text-red-500 text-sm'>This field is required</span>}
                             </label>
                             <label htmlFor="showPass" className=' flex items-center gap-2 '>
@@ -70,7 +66,7 @@ function Login () {
                         <div className='captcha flex flex-col gap-2 '>
                                 <span>Captcha</span>
                                 <Captcha dameText={dameText} />
-                                <input type="text" {...register('captchatext', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='Captcha code' />
+                                <input type="text" {...register('captchatext', {required: true})} className=' h-12 rounded-lg border-none form-input focus:placeholder:opacity-0 ' placeholder='Captcha code' />
                                 {errors.captchatext && <span className='text-red-500 text-sm'>Fill the captcha code</span>}
                             </div>
                         <button type='submit' className=' w-full h-12 rounded-lg bg-[#2B79D6] flex items-center justify-center font-bold text-white '>Entrar</button>
