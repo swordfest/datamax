@@ -24,8 +24,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      
-      <BrowserRouter>
+
+
+      <Login></Login>
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>} />
           <Route path='/dashboard'>
@@ -33,7 +35,7 @@ root.render(
             <Content/>
           </Route>
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
       
     </QueryClientProvider>
   </React.StrictMode>

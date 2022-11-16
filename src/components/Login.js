@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from "react-hook-form";
 import ReactDOM from 'react-dom/client';
 import Captcha from './Captcha';
-import '../index.css';
+import axios from 'axios';
+// import '../index.css';
 
 function Login () {
+
+    const [text, setText] = useState('');
+    const {register, handleSubmit, watch, formState: {errors}} = useForm('');
+
+    
+    const onSubmit = (dataForm) => {
+        
+        const objLogin = {
+            username: dataForm.user,
+            password: dataForm.pass,
+            idRequest: text,
+            captchatext: dataForm.captchatext
+        }
+        axios.post('https://www.nauta.cu:5002/login', objLogin)
+            .then (res => {
+                console.log(res);
+                console.log(res.data);
+            })
+        console.log(JSON.stringify(objLogin));
+    }
+
+
+    const dameText = (textParam) => {
+        setText(textParam);
+    }
+
+    
+
     return (
         <div className=' w-full h-screen bg-gradient-to-r from-[#ECECEC] via-[#D7D7D7] to-[#ECECEC] flex items-center justify-center '>
 
@@ -14,29 +44,32 @@ function Login () {
                 </div>
                 <div className='separator w-full h-px md:w-px md:h-full bg-[#9d9d9d] '> </div>
                 
-                <div className='form-wrapper w-full flex flex-col gap-6 '>
-                    {/* <form action="" method="post" className='gap-6'> */}
+                <div className='form-wrapper w-full flex flex-col justify-center gap-6 '>
+                    <form onSubmit={handleSubmit(onSubmit)} className='w-full flex flex-col gap-6 '>
                         <label htmlFor="user" className='flex flex-col gap-2'>
                             User
-                            <input type="text" id='user' className=' h-12 rounded-lg border-none form-input ' placeholder='user@email.domain' />
+                            <input type="text" id='user' {...register('user', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='user@email.domain' />
+                            {errors.user && <span className='text-red-500 text-sm'>This field is required</span>}
                         </label>
                         <div className='flex flex-col gap-2 '>
                             <label htmlFor="password" className='flex flex-col gap-2'>
                                 Password
-                                <input type="text" id='password' className=' h-12 rounded-lg border-none form-input ' placeholder='••••••••••' />
+                                <input type="password" id='password' {...register('pass', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='••••••••••' />
+                                {errors.pass && <span className='text-red-500 text-sm'>This field is required</span>}
                             </label>
                             <label htmlFor="showPass" className=' flex items-center gap-2 '>
                                 <input type="checkbox" name="Show Password" id="showPass" className='form-checkbox rounded-[4px]' />
                                 Show Password
                             </label>
                         </div>
-                        <div className='captcha flex flex-col gap-4 '>
+                        <div className='captcha flex flex-col gap-2 '>
                                 <span>Captcha</span>
-                                <Captcha />
-                                <input type="text" className=' h-12 rounded-lg border-none form-input ' placeholder='Captcha code' />
+                                <Captcha dameText={dameText} />
+                                <input type="text" {...register('captchatext', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='Captcha code' />
+                                {errors.captchatext && <span className='text-red-500 text-sm'>Fill the captcha code</span>}
                             </div>
                         <button type='submit' className=' w-full h-12 rounded-lg bg-[#2B79D6] flex items-center justify-center font-bold text-white '>Entrar</button>
-                    {/* </form> */}
+                    </form>
                 </div>
             </div>
         </div>
