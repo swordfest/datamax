@@ -26,7 +26,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
 
 
-      <Login></Login>
+      <Login/>
       {/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>} />
