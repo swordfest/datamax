@@ -9,6 +9,7 @@ function Login () {
 
     const [text, setText] = useState('');
     const {register, handleSubmit, watch, formState: {errors}} = useForm('');
+    const [showpwd, setShowPwd] = useState(false);
 
     
     const onSubmit = (dataForm) => {
@@ -30,6 +31,10 @@ function Login () {
 
     const dameText = (textParam) => {
         setText(textParam);
+    }
+
+    const togglePwd = () => {
+        setShowPwd(!showpwd);
     }
 
     
@@ -54,11 +59,11 @@ function Login () {
                         <div className='flex flex-col gap-2 '>
                             <label htmlFor="password" className='flex flex-col gap-2'>
                                 Password
-                                <input type="password" id='password' {...register('pass', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='••••••••••' />
+                                <input type={showpwd ? 'text' : 'password'} id='password' {...register('pass', {required: true})} className=' h-12 rounded-lg border-none form-input ' placeholder='••••••••••' />
                                 {errors.pass && <span className='text-red-500 text-sm'>This field is required</span>}
                             </label>
                             <label htmlFor="showPass" className=' flex items-center gap-2 '>
-                                <input type="checkbox" name="Show Password" id="showPass" className='form-checkbox rounded-[4px]' />
+                                <input type="checkbox" name="Show Password" onChange={togglePwd} id="showPass" className='form-checkbox rounded-[4px]' />
                                 Show Password
                             </label>
                         </div>
