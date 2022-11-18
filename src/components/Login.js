@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import ReactDOM from 'react-dom/client';
 import Captcha from './Captcha';
+import { useMutation } from 'react-query';
 import axios from 'axios';
 // import '../index.css';
 
@@ -10,21 +11,48 @@ function Login () {
     const [text, setText] = useState('');
     const {register, handleSubmit, watch, formState: {errors}} = useForm('');
     const [showpwd, setShowPwd] = useState(false);
+    // const [userRes, setUserRes] = useState('');
 
     
-    const onSubmit = (dataForm) => {
+    // const onSubmit = (dataForm) => {
+    //     const objLogin = {
+    //         username: dataForm.user,
+    //         password: dataForm.pass,
+    //         // tipoCuenta: 'USUARIO_PORTAL',
+    //         idRequest: text,
+    //         captchatext: dataForm.captchatext,
+    //     }
+    //     axios.post('https://www.nauta.cu:5002/login', objLogin)
+    //         .then (res => {
+    //             console.log(res);
+    //             console.log(res.data);
+    //             if (res.data.resultado === 'ok') {
+    //                 setUserRes({
+    //                     authorization: res.data.token,
+    //                     email: dataForm.user,
+    //                 });
+
+    //             }
+    //         })
+    //     // console.log(JSON.stringify(objLogin));
+    // }
+
+    const postingLogin = (objLogin) => {
+        return axios.post('https://www.nauta.cu:5002/login', objLogin)
+    }
+
+    const {mutate, data, isSuccess} = useMutation(postingLogin)
+        
+    const onSubmit = async (dataForm) => {
         const objLogin = {
             username: dataForm.user,
             password: dataForm.pass,
             idRequest: text,
             captchatext: dataForm.captchatext,
         }
-        axios.post('https://www.nauta.cu:5002/login', objLogin)
-            .then (res => {
-                console.log(res);
-                console.log(res.data);
-            })
-        console.log(JSON.stringify(objLogin));
+        mutate(objLogin, {onSuccess: () => localStorage.setItem('auth', data.data.resp.token)}, {onError: () => console.log('error')})
+        
+        // localStorage.setItem('auth', data.data.resp.token.toString)
     }
 
     const dameText = (textParam) => {

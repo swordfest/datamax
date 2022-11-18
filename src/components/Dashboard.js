@@ -9,6 +9,7 @@ function Dashboard () {
     return (
         <main className='container w-full h-screen ml-[100px] p-6 bg-slate-400'>
             {/* <Captcha/> */}
+            Ya tamos logueaos
         </main>
     )
 }
