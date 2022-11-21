@@ -50,8 +50,10 @@ function Login () {
             idRequest: text,
             captchatext: dataForm.captchatext,
         }
-        mutate(objLogin, {onSuccess: () => localStorage.setItem('auth', data.data.resp.token)}, {onError: () => console.log('error')})
-        
+        mutate(objLogin, {onSuccess: () => {}}, {onError: () => console.log('error')})
+        // localStorage.setItem('auth', data.data.resp.token.toString()); localStorage.setItem('email', dataForm.user.toString())
+        localStorage.setItem('auth', data.data.resp.token.toString())
+        localStorage.setItem('email', dataForm.user.toString())
         // localStorage.setItem('auth', data.data.resp.token.toString)
     }
 
