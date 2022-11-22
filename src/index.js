@@ -1,23 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import Navbar from './components/Navbar';
-import Captcha from './components/Captcha';
-import TabMenu from './components/TabMenu';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { BrowserRouter, Route, Routes, Links } from 'react-router-dom';
-import Login from './components/Login';
-import Dashboard from './components/Dashboard';
-import Content from './components/Content';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import Navbar from "./components/Navbar";
+import Captcha from "./components/Captcha";
+import TabMenu from "./components/TabMenu";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { BrowserRouter, Route, Routes, Links } from "react-router-dom";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import Content from "./components/Content";
+import store from "./features/store";
+import { Provider } from "react-redux";
 
 const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      refetchOnWindowFocus: false,
-    },
-  },
+	defaultOptions: {
+		queries: {
+			refetchOnWindowFocus: false,
+		},
+	},
 });
 
 // const test = () => {
@@ -28,13 +30,13 @@ const queryClient = new QueryClient({
 //   }
 // }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-  
-    <Login/>
-      {/* <BrowserRouter>
+	<Provider store={store}>
+		<React.StrictMode>
+			<QueryClientProvider client={queryClient}>
+				<Login />
+				{/* <BrowserRouter>
         <Routes>
           <Route path='/' element={<Login/>} />
           <Route path='/dashboard'>
@@ -43,9 +45,9 @@ root.render(
           </Route>
         </Routes>
       </BrowserRouter> */}
-      
-    </QueryClientProvider>
-  </React.StrictMode>
+			</QueryClientProvider>
+		</React.StrictMode>
+	</Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
